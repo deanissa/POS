@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SalesController;
+use App\Http\Controllers\LevelController;
 use resources\views\helloblade;
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,8 @@ use resources\views\helloblade;
 //Route::get('/', function () {
 //    return view('welcome');
 //});
+
+//JB 2
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::prefix('product')->group(function () {
@@ -29,6 +32,15 @@ Route::prefix('product')->group(function () {
     Route::get('/category/home-care', [ProductController::class, 'homeCare'])->name('product.home-care');
     Route::get('/category/baby-kid', [ProductController::class, 'babyKid'])->name('product.baby-kid');
 });
+
 Route::get('/user/{id}/name/{name}', [UserController::class, 'show'])->name('user.show');
 
 Route::get('/sales', [SalesController::class, 'index'])->name('sales.index');
+
+//JB3
+//Routing Level 
+Route::get('/', function() {
+    return view('welcome');
+});
+
+Route::get('/level', [LevelController::class, 'index']);
