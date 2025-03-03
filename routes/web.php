@@ -6,6 +6,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SalesController;
 use App\Http\Controllers\LevelController;
+use App\Http\Controllers\KategoriController;
 use resources\views\helloblade;
 /*
 |--------------------------------------------------------------------------
@@ -44,3 +45,5 @@ Route::get('/', function() {
 });
 
 Route::get('/level', [LevelController::class, 'index']);
+//Routing Kategoti
+Route::get('/kategori', [KategoriController::class, 'index']);
