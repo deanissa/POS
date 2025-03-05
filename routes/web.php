@@ -34,7 +34,7 @@ Route::prefix('product')->group(function () {
     Route::get('/category/baby-kid', [ProductController::class, 'babyKid'])->name('product.baby-kid');
 });
 
-Route::get('/user/{id}/name/{name}', [UserController::class, 'show'])->name('user.show');
+//Route::get('/user/{id}/name/{name}', [UserController::class, 'show'])->name('user.show');
 
 Route::get('/sales', [SalesController::class, 'index'])->name('sales.index');
 
@@ -47,3 +47,5 @@ Route::get('/', function() {
 Route::get('/level', [LevelController::class, 'index']);
 //Routing Kategoti
 Route::get('/kategori', [KategoriController::class, 'index']);
+//Routing User
+Route::get('/user', [UserController::class, 'index']);
