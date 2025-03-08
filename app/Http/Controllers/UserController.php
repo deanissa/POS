@@ -11,7 +11,7 @@ class UserController extends Controller
     {
 
         //coba akses model UserModel
-        $user = UserModel::find(1); //ambil model dengan kunci utama (id pertama)
+        $user = UserModel::where('level_id',1)->first(); //ambil model pertama yang cocok dengan batasan kueri
         return view('user', ['data' => $user]);
     }
 }
