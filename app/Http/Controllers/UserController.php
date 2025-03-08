@@ -12,7 +12,14 @@ class UserController extends Controller
     {
 
         //coba akses model UserModel
-        $user = UserModel :: where('level_id', 2)->count();
+        $user = UserModel::firstOrCreate(
+            ['username' => 'manager22'], // Dicari dulu berdasarkan username
+    [
+        'nama' => 'Manager dua dua',
+        'password' => Hash::make('12345'), // Password tetap dimasukkan
+        'level_id' => 2
+    ]
+        );
         return view('user', ['data' => $user]);
     }
 }
