@@ -12,7 +12,7 @@ class UserController extends Controller
     {
 
         //coba akses model UserModel
-        $user = UserModel :: findOrFail(1);
+        $user = UserModel :: where('username' , 'manager9')->firstOrFail();
         return view('user', ['data' => $user]);
     }
 }
