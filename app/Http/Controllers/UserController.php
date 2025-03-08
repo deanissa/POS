@@ -12,14 +12,15 @@ class UserController extends Controller
     {
 
         //coba akses model UserModel
-        $user = UserModel::firstOrCreate(
-            ['username' => 'manager22'], // Dicari dulu berdasarkan username
-    [
-        'nama' => 'Manager dua dua',
-        'password' => Hash::make('12345'), // Password tetap dimasukkan
-        'level_id' => 2
-    ]
+        $user = UserModel::firstOrNew(
+            ['username' => 'manager33'], // Dicari dulu berdasarkan username
+     [
+         'nama' => 'Manager tiga tiga',
+         'password' => Hash::make('12345'), // Password tetap dimasukkan
+         'level_id' => 2
+        ]
         );
+        $user -> save();
         return view('user', ['data' => $user]);
     }
 }
