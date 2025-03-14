@@ -14,7 +14,7 @@ class UserController extends Controller
         return view('user',['data' => $user]);
     }
 
-
+    //fungsi tambah
     public function tambah()
     {
         return view('user_tambah');
@@ -29,12 +29,11 @@ class UserController extends Controller
         return redirect('/user');
     }
 
-
+    //fungsi ubah
     public function ubah($id) {
         $user = UserModel::find($id);
         return view('user_ubah', ['data' => $user]);
     }
-
     public function ubah_simpan ($id, Request $request) {
         $user = UserModel::find($id);
             $user->username = $request->username;
@@ -46,6 +45,13 @@ class UserController extends Controller
             $user->level_id = $request->level_id;
 
             $user->save();
+        return redirect('/user');
+    }
+    //fungsi hapus
+    public function hapus($id){
+        $user = UserModel::find($id);
+        $user->delete();
+
         return redirect('/user');
     }
 }

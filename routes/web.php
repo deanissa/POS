@@ -52,5 +52,6 @@ Route::get('/user', [UserController::class, 'index']);
 Route::get('/user/tambah', [UserController::class, 'tambah'])->name('user.tambah');
 Route::get('/user/tambah_simpan', [UserController::class, 'tambah_simpan'])->name('user.tambah_simpan');
 Route::get('/user/ubah/{id}', [UserController::class, 'ubah']);
-//Route::put('/user/ubah_simpan/{id}',[UserController::class, 'ubah_simpan']);
 Route::put('/user/ubah_simpan/{id}', [UserController::class, 'ubah_simpan']);
+Route::get('/user/hapus/{id}', [UserController::class, 'hapus']);
+
