@@ -26,4 +26,8 @@ class UserController extends Controller
         ]);
         return redirect('/user');
     }
+    public function ubah($id) {
+        $user = UserModel::find($id);
+        return view('user_ubah', ['data' => $user]);
+    }
 }
