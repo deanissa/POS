@@ -8,7 +8,8 @@
 </head>
 <body>
     <h1>Data User</h1>
-    <a href="/user/tambah">+Tambah User</a>
+    <a href="{{ route('user.tambah') }}">+ Tambah User</a> 
+    <!--memperbaiki kode, karena href tadi tidak kehubung ke route-->
     <table border="1" cellpadding="2" cellspacing="0">
         <tr>
             <td>ID</td>

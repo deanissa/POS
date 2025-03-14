@@ -7,7 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\SalesController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\KategoriController;
-use resources\views\helloblade;
+//use resources\views\helloblade;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -49,3 +49,4 @@ Route::get('/level', [LevelController::class, 'index']);
 Route::get('/kategori', [KategoriController::class, 'index']);
 //Routing User
 Route::get('/user', [UserController::class, 'index']);
+Route::get('/user/tambah', [UserController::class, 'tambah'])->name('user.tambah');
