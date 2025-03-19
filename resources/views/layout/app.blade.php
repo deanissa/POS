@@ -26,12 +26,36 @@
 @endif
 @stop
 
+{{-- Navbar Customization --}}
+@section('content_top_nav_right')
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('kategori.index') }}">
+                <i class="fas fa-list"></i> Kategori
+            </a>
+        </li>
+    </ul>
+@endsection
+
+
+{{-- Navbar Menu --}}
+@section('adminlte_navbar')
+<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
+
+    <li class="nav-item">
+        <a href="../kategori.index" class="nav-link">
+            <i class="nav-icon fas fa-list"></i>
+            <p>Kategori</p>
+        </a>
+    </li>
+</ul>
+@endsection
+
 {{-- Rename section content to content_body --}}
 
 @section('content')
 @yield('content_body')
 @stop
-
 
 {{-- Create a common footer --}}
 
