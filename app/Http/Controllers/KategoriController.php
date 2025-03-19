@@ -9,10 +9,13 @@ use Illuminate\Support\Facades\DB;
 use Symfony\Component\VarDumper\Caster\RedisCaster;
 
 class KategoriController extends Controller
-{
+{   
+    //Controller Kategori Index
     public function index(KategoriDataTable $dataTable) {
         return $dataTable->render('kategori.index');
     }
+
+    //Controller Kategori Create
     public function create() {
         return view('kategori.create');
     }
@@ -23,7 +26,21 @@ class KategoriController extends Controller
         ]);
         return redirect('/kategori');
     }
-
+    //Controller Kategori Edit
+    public function edit($id) {
+        $kategori = KategoriModel::findOrFail($id);
+        return view('kategori.edit', compact('kategori'));
+    }
+    public function update(Request $request, $id) {
+        $kategori = KategoriModel::findOrFail($id);
+        $kategori->update([
+            'kategori_kode' => $request->kodeKategori,
+            'kategori_nama' => $request->namaKategori,
+        ]);
+    
+        return redirect()->route('kategori.index')->with('success', 'Kategori berhasil diperbarui.');
+    }
+    
     //public function index() {
     /*$data = [
         'kategori_kode' => 'SNK',

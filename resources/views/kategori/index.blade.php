@@ -23,4 +23,17 @@
 
 @push('scripts')
     {!! $dataTable->scripts() !!}
+
+    <script>
+        $(document).ready(function () {
+            // Menambahkan kolom Action dengan tombol Edit
+            $('table').on('draw.dt', function () {
+                $('.btn-edit').on('click', function () {
+                    var id = $(this).data('id');
+                    window.location.href = '/kategori/' + id + '/edit';
+                });
+            });
+        });
+    </script>
 @endpush
+
