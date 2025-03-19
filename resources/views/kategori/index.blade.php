@@ -22,18 +22,43 @@
 @endsection
 
 @push('scripts')
-    {!! $dataTable->scripts() !!}
+{!! $dataTable->scripts() !!}
 
-    <script>
-        $(document).ready(function () {
-            // Menambahkan kolom Action dengan tombol Edit
-            $('table').on('draw.dt', function () {
-                $('.btn-edit').on('click', function () {
-                    var id = $(this).data('id');
-                    window.location.href = '/kategori/' + id + '/edit';
-                });
-            });
+<script>
+    $(document).ready(function () {
+        // Event handler untuk tombol Edit
+        $(document).on('click', '.btn-edit', function () {
+            var id = $(this).data('id');
+            window.location.href = '/kategori/' + id + '/edit';
         });
-    </script>
+
+        // Event handler untuk tombol Delete
+        $(document).on('click', '.btn-delete', function () {
+        var id = $(this).data('id');
+
+        if (confirm("Apakah Anda yakin ingin menghapus kategori ini?")) {
+        $.ajax({
+            url: '/kategori/' + id,
+            type: 'POST',  // Harus POST karena DELETE perlu _method
+            data: {
+                _method: 'DELETE', // Laravel membutuhkan ini untuk DELETE request
+                _token: '{{ csrf_token() }}'
+            },
+            success: function (response) {
+                alert(response.success);
+                $('#kategori-table').DataTable().ajax.reload(); // Refresh DataTables setelah delete
+            },
+            error: function (xhr) {
+                alert('Terjadi kesalahan saat menghapus data.');
+            }
+        });
+    }
+});
+
+    });
+</script>
 @endpush
+
+
+
 
