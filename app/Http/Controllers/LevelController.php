@@ -26,7 +26,7 @@ class LevelController extends Controller
 
     public function list(Request $request)
     {
-        $level = LevelModel::select('level_id', 'level_nama');
+        $level = LevelModel::select('level_id', 'level_kode', 'level_nama');
 
         return DataTables::of($level)
             ->addIndexColumn()
@@ -61,6 +61,7 @@ class LevelController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'level_kode' => 'required|string|unique:m_level,level_kode',
             'level_nama' => 'required|string|unique:m_level,level_nama'
         ]);
 
