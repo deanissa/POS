@@ -81,7 +81,7 @@
     <script src="{{ asset('adminlte/dist/js/adminlte.min.js') }}"></script>
     <script>
       //Untuk mengirimkan token laravel CSRF pada setiap request ajax
-      $.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf.token"]').attr('content')}});
+      $.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}});
     </script>
     @stack('js') <!--Digunakan untuk memanggil custom js dari perinyaj push ('js') pada masing-masing view-->
   </body>

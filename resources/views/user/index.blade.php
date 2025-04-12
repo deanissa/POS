@@ -35,7 +35,7 @@
                 columns: [
                     {
                         // nomor urut dari laravel datatable addIndexColumn() data: "DT_RowIndex",
-                        className: "text-center", orderable: false, searchable: false
+                        data: "DT_RowIndex", className: "text-center", orderable: false, searchable: false
                     }, {
                         data: "username", className: "",
                         // orderable: true, jika ingin kolom ini bisa diurutkan orderable: true,
@@ -45,7 +45,8 @@
                         className: "", orderable: true, searchable: true
                     }, {
                         // mengambil data level hasil dari ORM berelasi data: "level.level_nama",
-                        className: "", orderable: false, searchable: false
+                        data: "level.level_nama", 
+                        className:"", orderable: false, searchable: false
                     }, {
                         data: "aksi",
                         className: "", orderable: false, searchable: false
