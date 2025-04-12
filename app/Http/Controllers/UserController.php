@@ -1,57 +1,28 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
-use App\Models\UserModel;
-use Illuminate\Support\Facades\Hash;
 
+use App\Models\LevelModel;
+use App\Models\UserModel;
+use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
 
 class UserController extends Controller
 {
+    // Menampilkan halaman awal user
     public function index()
     {
-        $user = UserModel::with('level')->get();
-        return view('user', ['data' => $user]);
-    }
+        $breadcrumb = (object) [
+            'title' => 'Daftar User',
+            'list' => ['Home', 'User']
+        ];
 
-    //fungsi tambah
-    public function tambah()
-    {
-        return view('user_tambah');
-    }
-    public function tambah_simpan (Request $request) {
-        UserModel::create([
-            'username' => $request->username,
-            'nama' => $request->nama,
-            'password' => Hash::make('$request->password'),
-            'level_id' => $request->level_id
-        ]);
-        return redirect('/user');
-    }
+        $page = (object) [
+            'title' => 'Daftar user yang terdaftar dalam sistem'
+        ];
 
-    //fungsi ubah
-    public function ubah($id) {
-        $user = UserModel::find($id);
-        return view('user_ubah', ['data' => $user]);
-    }
-    public function ubah_simpan ($id, Request $request) {
-        $user = UserModel::find($id);
-            $user->username = $request->username;
-            $user->nama = $request->nama;
-            // Jika password diisi, baru di-update
-            if (!empty($request->password)) {
-                $user->password = Hash::make($request->password);
-            }
-            $user->level_id = $request->level_id;
+        $activeMenu = 'user'; // set menu yang sedang aktif
 
-            $user->save();
-        return redirect('/user');
-    }
-    //fungsi hapus
-    public function hapus($id){
-        $user = UserModel::find($id);
-        $user->delete();
-
-        return redirect('/user');
+        return view('user.index', ['breadcrumb' => $breadcrumb, 'page' => $page, 'activeMenu' => $activeMenu]);
     }
 }
