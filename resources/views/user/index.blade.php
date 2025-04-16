@@ -61,7 +61,7 @@
         var dataUser;
         $(document).ready(function () {
             dataUser = $('#table_user').DataTable({
-                // serverSide: true, jika ingin menggunakan server side processing serverSide: true,
+                serverSide: true, //jika ingin menggunakan server side processing serverSide: true,
                 ajax: {
                     "url": "{{ url('user/list') }}", 
                     "dataType": "json",
