@@ -30,7 +30,7 @@
                 Apakah Anda yakin ingin menghapus data berikut?
             </div>
             <table class="table table-sm table-bordered table-striped">
-                <tr><th class="text-right col-3">Kode Level :</th><td class="col-9">{{ $level->kode_level }}</td></tr>
+                <tr><th class="text-right col-3">Kode Level :</th><td class="col-9">{{ $level->level_kode }}</td></tr>
                 <tr><th class="text-right col-3">Nama Level :</th><td class="col-9">{{ $level->level_nama }}</td></tr>
             </table>
         </div>
