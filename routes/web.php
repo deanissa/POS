@@ -10,6 +10,7 @@ use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\StokController;
+use App\Http\Controllers\AuthController;
 
 
 //use resources\views\helloblade;
@@ -45,16 +46,16 @@ Route::get('/sales', [SalesController::class, 'index'])->name('sales.index');
 
 //JB3
 //Routing Level 
-Route::get('/', function() {
+Route::get('/', function () {
     return view('welcome');
 });
 
 Route::get('/level', [LevelController::class, 'index']);
 //Routing Kategoti
 Route::get('/kategori', [KategoriController::class, 'index'])->name('kategori.index'); // Tambahkan ini
-Route::get('/kategori/create', [KategoriController::class, 'create'])->name('kategori.create'); 
+Route::get('/kategori/create', [KategoriController::class, 'create'])->name('kategori.create');
 Route::post('/kategori', [KategoriController::class, 'store'])->name('kategori.store');
-Route::get('/kategori/{id}/edit', [KategoriController::class, 'edit'])->name('kategori.edit'); 
+Route::get('/kategori/{id}/edit', [KategoriController::class, 'edit'])->name('kategori.edit');
 Route::put('/kategori/{id}', [KategoriController::class, 'update'])->name('kategori.update'); // Perbaiki ini
 Route::get('/kategori/{id}', [KategoriController::class, 'destroy'])->name('kategori.destroy');
 
@@ -75,7 +76,7 @@ Route::group(['prefix' => 'user'], function () {
     Route::post('/list', [UserController::class, 'list']); // menampilkan data user dalam bentuk json untuk datatables
     Route::get('/create', [UserController::class, 'create']); // menampilkan halaman form tambah user
     Route::post('/', [UserController::class, 'store']); // menyimpan data user baru
-    Route::get('/create_ajax', [UserController::class, 'create_ajax']);//Menampilkan halaman form tambah user Ajax
+    Route::get('/create_ajax', [UserController::class, 'create_ajax']); //Menampilkan halaman form tambah user Ajax
     Route::post('/ajax', [UserController::class, 'store_ajax']); //Menyimpan data user baru
     Route::get('/{id}', [UserController::class, 'show']); // menampilkan detail user
     Route::get('/{id}/edit', [UserController::class, 'edit']); // menampilkan halaman form edit user
@@ -93,7 +94,7 @@ Route::group(['prefix' => 'level'], function () {
     Route::post('/list', [LevelController::class, 'list']); // menampilkan data level dalam bentuk json untuk datatables
     Route::get('/create', [LevelController::class, 'create']); // menampilkan halaman form tambah level
     Route::post('/', [LevelController::class, 'store']); // menyimpan data level baru
-    Route::get('/create_ajax', [LevelController::class, 'create_ajax']);//Menampilkan halaman form tambah Level Ajax
+    Route::get('/create_ajax', [LevelController::class, 'create_ajax']); //Menampilkan halaman form tambah Level Ajax
     Route::post('/ajax', [LevelController::class, 'store_ajax']); //Menyimpan data Level baru
     Route::get('/{id}', [LevelController::class, 'show']); // menampilkan detail level
     Route::get('/{id}/edit', [LevelController::class, 'edit']); // menampilkan halaman form edit level
@@ -160,6 +161,14 @@ Route::group(['prefix' => 'barang'], function () {
     Route::delete('/{id}', [BarangController::class, 'destroy']);         // menghapus data barang
 });
 
-
-
-
+//Auth
+Route::pattern('id','[0-9]+'); // artinya ketika ada parameter {id}, maka harus berupa angka
+ 
+ Route::get('login', [AuthController::class, 'login'])->name('login');
+ Route::post('login', [AuthController::class, 'postlogin']);
+ Route::get('logout', [AuthController::class, 'logout'])->middleware('logout');
+ 
+ Route::middleware(['auth'])->group(function(){ // artinya semua route di dalam group ini harus login dulu
+ 
+ 
+ });
