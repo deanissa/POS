@@ -102,6 +102,7 @@ Route::middleware(['auth'])->group(function () { // artinya semua route di dalam
            Route::delete('/{id}/delete_ajax', [LevelController::class, 'delete_ajax']); // menghapus data level (ajax)
            Route::get('/import', [LevelController::class,'import']);           //ajax form upload excel
            Route::post('/import_ajax', [LevelController::class, 'import_ajax']);   //ajax import excel
+           Route::get('/export_excel', [LevelController::class,'export_excel']);     //export excel
        });
    });
 
@@ -148,6 +149,7 @@ Route::middleware(['auth'])->group(function () { // artinya semua route di dalam
            Route::delete('/{id}/delete_ajax', [UserController::class, 'delete_ajax']); // menghapus data user (ajax)
            Route::get('/import', [UserController::class,'import']);           //ajax form upload excel
            Route::post('/import_ajax', [UserController::class, 'import_ajax']);   //ajax import excel
+           Route::get('/export_excel', [UserController::class,'export_excel']);     //export excel
        });
    });
 
@@ -170,6 +172,7 @@ Route::middleware(['auth'])->group(function () { // artinya semua route di dalam
            Route::delete('/{id}/delete_ajax', [KategoriController::class, 'delete_ajax']); // menghapus data kategori (ajax)
            Route::get('/import', [KategoriController::class,'import']);           //ajax form upload excel
            Route::post('/import_ajax', [KategoriController::class, 'import_ajax']);   //ajax import excel
+           Route::get('/export_excel', [KategoriController::class,'export_excel']);     //export excel
        });
    });
    Route::group(['prefix' => 'stok'], function () {
@@ -190,7 +193,8 @@ Route::middleware(['auth'])->group(function () { // artinya semua route di dalam
         Route::get('/{id}/delete_ajax', [StokController::class, 'confirm_ajax']); // menampilkan konfirmasi hapus supplier (ajax)
         Route::delete('/{id}/delete_ajax', [StokController::class, 'delete_ajax']); // menghapus data supplier (ajax)
         Route::get('/import', [StokController::class,'import']);           //ajax form upload excel
-           Route::post('/import_ajax', [StokController::class, 'import_ajax']);   //ajax import excel
+        Route::post('/import_ajax', [StokController::class, 'import_ajax']);   //ajax import excel
+        Route::get('/export_excel', [StokController::class,'export_excel']);     //export excel
     });
 });
 });
