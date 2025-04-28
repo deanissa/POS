@@ -11,7 +11,7 @@ use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\StokController;
 use App\Http\Controllers\AuthController;
-
+use App\Http\Controllers\ProfileController;
 
 //use resources\views\helloblade;
 /*
@@ -81,6 +81,11 @@ Route::middleware(['auth'])->group(function () { // artinya semua route di dalam
  
     Route::get('/', [WelcomeController::class, 'index']);
 
+    //route profile
+    Route::group(['prefix' => 'profile'], function () {
+        Route::get('/', [ProfileController::class, 'index']);
+        Route::post('/update_photo', [ProfileController::class, 'update_photo']);
+    });
    // route Level
    // artinya semua route di dalam group ini harus punya role ADM (Administrator)
    Route::group(['prefix' => 'level'], function () {
